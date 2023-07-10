@@ -26,10 +26,10 @@ class Movie
 
     public function getMovieDetails()
     {
-        $string = "Movie: " . $this->title . ", Genre: " . $this->genre . ", Year: " . $this->year . ", Length: " . $this->length;
+        $string = "Movie: " . $this->title . ";<br/> Genre: " . $this->genre->name . ";<br/> Year: " . $this->year . ";<br/> Length: " . $this->length;
 
         if ($this->rating != NULL) {
-            $string .= ", Rating: " . $this->rating;
+            $string .= ";<br/> Rating: " . $this->rating;
         }
         return $string;
     }
@@ -39,7 +39,15 @@ class Movie
 $avengers = new Movie('Avengers', '2012', new Genre('Fantascienza'), 142);
 $avengers->rating = 8;
 
-var_dump($avengers);
+$avatar = new Movie('Avatar', '2009', new Genre('Avventura'), 162);
+$avatar->rating = 8;
+
+
+//STAMPO A SCHERMO
+echo $avengers->getMovieDetails();
+echo "<br/><hr/>";
+echo $avatar->getMovieDetails();
+
 
 ?>
 
