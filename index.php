@@ -2,7 +2,7 @@
 class Genre
 {
     public $name;
-    public function _construct($name)
+    public function __construct($name)
     {
         $this->name = $name;
     }
@@ -16,14 +16,31 @@ class Movie
     public $length;
     public $rating;
 
-    public function _construct($title, $year, Genre $genre, $length)
+    public function __construct($title, $year, Genre $genre, $length)
     {
         $this->title = $title;
         $this->year = $year;
         $this->genre = $genre;
         $this->length = $length;
     }
+
+    public function getMovieDetails()
+    {
+        $string = "Movie: " . $this->title . ", Genre: " . $this->genre . ", Year: " . $this->year . ", Length: " . $this->length;
+
+        if ($this->rating != NULL) {
+            $string .= ", Rating: " . $this->rating;
+        }
+        return $string;
+    }
 }
+
+//CREO OGGETTI DELLA CLASSE
+$avengers = new Movie('Avengers', '2012', new Genre('Fantascienza'), 142);
+$avengers->rating = 8;
+
+var_dump($avengers);
+
 ?>
 
 <!DOCTYPE html>
